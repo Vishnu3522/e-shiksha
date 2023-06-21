@@ -1,29 +1,46 @@
-import React, { useState } from 'react';
-import clogo from "../Components/download.jpeg";
-import "../Components/Courses.css";
+import React, { useState, useContext } from 'react';
+import clogo from '../Components/download.jpeg';
+import '../Components/Courses.css';
 import { Link } from 'react-router-dom';
+import { AuthContext } from './AuthContext';
 
 function Courses() {
+  const { isLoggedIn, login } = useContext(AuthContext);
   const [isPlayable, setIsPlayable] = useState(false);
 
   const handleEnrollClick = () => {
-    setIsPlayable(true);
+    if (isLoggedIn) {
+      setIsPlayable(true);
+      
+    } 
+    else {
+      alert('You need to log in to access this content.');
+      login();
+    }
   };
 
   return (
     <>
       <nav id="navbar">
-        <Link to="/"><h2 id="son">E-Shiksha</h2></Link>
+        <Link to="/">
+          <h2 id="son">E-Shiksha</h2>
+        </Link>
         <img src={clogo} height="30%" width="80%" alt="Wisflux Logo" />
         <ul className="list">
           <li>
-            <a className="link" href="#webd">Web Development</a>
+            <a className="link" href="#webd">
+              Web Development
+            </a>
           </li>
           <li>
-            <a className="link" href="#android">Android Development</a>
+            <a className="link" href="#android">
+              Android Development
+            </a>
           </li>
           <li>
-            <a className="link" href="#python">Python</a>
+            <a className="link" href="#python">
+              Python
+            </a>
           </li>
         </ul>
       </nav>
@@ -35,7 +52,15 @@ function Courses() {
               <div className="card-body">
                 <div className="iframe-container">
                   {isPlayable ? (
-                   <iframe width="560" height="515" src="https://www.youtube.com/embed/videoseries?list=PLwGdqUZWnOp2jmYb2TQGYgBYp0xGwj9V1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe
+                      width="560"
+                      height="515"
+                      src="https://www.youtube.com/embed/videoseries?list=PLwGdqUZWnOp2jmYb2TQGYgBYp0xGwj9V1"
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    ></iframe>
                   ) : (
                     <div className="play-button">
                       <p>Enroll to watch the video</p>
@@ -53,7 +78,15 @@ function Courses() {
               <div className="card-body">
                 <div className="iframe-container">
                   {isPlayable ? (
-                   <iframe width="560" height="515" src="https://www.youtube.com/embed/videoseries?list=PLwGdqUZWnOp2jmYb2TQGYgBYp0xGwj9V1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe
+                      width="560"
+                      height="515"
+                      src="https://www.youtube.com/embed/videoseries?list=PLwGdqUZWnOp2jmYb2TQGYgBYp0xGwj9V1"
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    ></iframe>
                   ) : (
                     <div className="play-button">
                       <p>Enroll to watch the video</p>
@@ -76,7 +109,15 @@ function Courses() {
               <div className="card-body">
                 <div className="iframe-container">
                   {isPlayable ? (
-                   <iframe width="560" height="315" src="https://www.youtube.com/embed/mXjZQX3UzOs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe
+                      width="560"
+                      height="315"
+                      src="https://www.youtube.com/embed/mXjZQX3UzOs"
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    ></iframe>
                   ) : (
                     <div className="play-button">
                       <p>Enroll to watch the video</p>
@@ -94,7 +135,15 @@ function Courses() {
               <div className="card-body">
                 <div className="iframe-container">
                   {isPlayable ? (
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/mXjZQX3UzOs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe
+                      width="560"
+                      height="315"
+                      src="https://www.youtube.com/embed/mXjZQX3UzOs"
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    ></iframe>
                   ) : (
                     <div className="play-button">
                       <p>Enroll to watch the video</p>
@@ -110,9 +159,6 @@ function Courses() {
             </div>
           </div>
         </section>
-
-        
-
       </main>
     </>
   );

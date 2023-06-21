@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import '../Components/Login.css';
 
 const Signup = () => {
@@ -20,7 +20,21 @@ const Signup = () => {
   };
 
   const handleRegister = () => {
-    console.log(`Registered with username: ${username} and password: ${password}`);
+    if (password !== confirmPassword) {
+      console.log("Passwords do not match");
+      return;
+    }
+
+    const user = {
+      username: username,
+      password: password
+    };
+
+    // Store the user in local storage
+    localStorage.setItem('user', JSON.stringify(user));
+
+    alert(`Registered with username: ${username} and password: ${password}`);
+    window.location.href = '/';
   };
 
   return (
